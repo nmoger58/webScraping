@@ -6,7 +6,7 @@ const fetchGithub = async () => {
         args: ['--no-sandbox', '--disable-setuid-sandbox'],
     });
     const page = await browser.newPage();
-    await page.goto('https://github.com/saadhussain01306');
+    await page.goto('https://github.com/nmoger58');
     await page.waitForNetworkIdle()
     await page.screenshot({ path: 'screenshot.png' });
     const data = await page.evaluate(() => {
@@ -29,7 +29,7 @@ const fetchGithub = async () => {
         return { name, fullName, bio, links, followers };
     })
     console.log(data);
-    await page.goto('https://github.com/saadhussain01306?page=1&tab=repositories');
+    await page.goto('https://github.com/nmoger58?page=1&tab=repositories');
     await page.waitForNetworkIdle()
     await page.screenshot({ path: 'screenshot2.png' });
     const repoData=await page.evaluate(() => {
@@ -46,7 +46,7 @@ const fetchGithub = async () => {
     return { data, repoData };
 }
    
-    
+fetchGithub()
 
 module.exports={
     fetchGithub
