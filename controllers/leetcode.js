@@ -1,6 +1,6 @@
 const puppeteer = require('puppeteer');
 
-const fetchLeetcode = async () =>{
+const fetchLeetcode = async (username) =>{
   const browser = await puppeteer.launch({
     headless: true,
      args: ['--no-sandbox', '--disable-setuid-sandbox'],
@@ -11,7 +11,7 @@ const fetchLeetcode = async () =>{
     'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36'
   );
     console.log('Navigating to LeetCode profile...');
-    await page.goto('https://leetcode.com/lucifer58/', {
+    await page.goto(`https://leetcode.com/${username}/`, {
       waitUntil: 'networkidle2',
       timeout: 15000,
     });
