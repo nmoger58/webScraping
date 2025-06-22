@@ -1,7 +1,7 @@
 const express = require('express');
 const { fetchGithub } = require('./controllers/github');
 const { fetchLeetcode } = require('./controllers/leetcode');
-
+require('dotenv').config();
 const app=express();
 
 app.use(express.json());
@@ -35,4 +35,4 @@ app.get('/leetcode/:username',async(req,res)=>{
     });
 }
 );
-app.listen(3000,()=> console.log('Server is running on port 3000'));
+app.listen(process.env.PORT,()=> console.log('Server is running on port 3000'));
