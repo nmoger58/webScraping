@@ -11,7 +11,7 @@ const fetchGithub = async (username) => {
     try {
         await page.goto(`https://github.com/${username}`);
         await page.waitForNetworkIdle();
-        await page.screenshot({ path: 'screenshot.png' });
+    
         
         const data = await page.evaluate(() => {
             // Helper function to safely get text content
@@ -46,7 +46,7 @@ const fetchGithub = async (username) => {
         // Navigate to repositories page
         await page.goto(`https://github.com/${username}?page=1&tab=repositories`);
         await page.waitForNetworkIdle();
-        await page.screenshot({ path: 'screenshot2.png' });
+     
         
         const repoData = await page.evaluate(() => {
             // Helper function to safely get text content

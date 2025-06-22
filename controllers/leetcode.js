@@ -1,7 +1,8 @@
 const puppeteer = require('puppeteer');
 
 const fetchLeetcode = async (username) =>{
-  const browser = await puppeteer.launch({
+ try {
+   const browser = await puppeteer.launch({
     headless: true,
      args: ['--no-sandbox', '--disable-setuid-sandbox'],
   });
@@ -16,7 +17,7 @@ const fetchLeetcode = async (username) =>{
       timeout: 15000,
     });
 
-    await page.screenshot({ path: 'screenshot.png' });
+   
     const data = await page.evaluate(() => {
       const singleFetch=(classname)=>{
          return document.querySelector(classname).innerText;
@@ -42,6 +43,10 @@ const fetchLeetcode = async (username) =>{
     console.log(data);
     await browser.close();
     return {data};
+ } catch (error) {
+    console.error('Error fetching LeetCode data:', error);
+    return { error: 'Failed to fetch LeetCode data' };
+ }
 }
 fetchLeetcode()
 module.exports = {
