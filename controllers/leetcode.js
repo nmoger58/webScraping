@@ -64,7 +64,7 @@ const fetchLeetcode = async (username) => {
 };
 
 // Example usage (Remove or modify in production)
-fetchLeetcode('nmoger58');
+// fetchLeetcode('nmoger58');
 
 module.exports = {
   fetchLeetcode,
